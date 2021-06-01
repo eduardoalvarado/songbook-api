@@ -1,6 +1,5 @@
 import "reflect-metadata";
 import {Field, ID, ObjectType } from 'type-graphql'
-import { ObjectId } from 'mongodb'
 import { getModelForClass, prop } from '@typegoose/typegoose'
 import { Verse } from './Verse'
 import { Ref } from '../types'
@@ -26,8 +25,9 @@ export class Song {
   @Field()
   cover?: string
 
+  @prop({default: () => new Date()})
   @Field(() => String)
-  createAt!: string
+  createAt!: Date
 }
 
 export const SongModel = getModelForClass(Song)
