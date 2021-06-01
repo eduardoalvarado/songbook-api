@@ -1,14 +1,11 @@
 import express from 'express'
 import { ApolloServer } from 'apollo-server-express'
-import Resolvers from './resolvers'
-import {buildSchema, NonEmptyArray} from 'type-graphql'
+import { buildResolversSchema } from './resolvers'
 
 export async function initServer() {
   const app = express()
   const server = new ApolloServer({
-    schema: await buildSchema({
-      resolvers: Resolvers as NonEmptyArray<Function>
-    }),
+    schema: await buildResolversSchema(),
     context: (
       {req, res}
     ) => ({req, res})

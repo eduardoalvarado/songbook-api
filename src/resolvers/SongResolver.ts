@@ -4,6 +4,12 @@ import { Song, SongModel } from '../entity/Song'
 
 @Resolver()
 export class SongResolver {
+
+  @Query(() => [Song])
+  async getSongs() {
+    return SongModel.find();
+  }
+
   @Mutation(returns => Song)
   async createSong(
     @Arg('inputSong') inputSong: InputSong

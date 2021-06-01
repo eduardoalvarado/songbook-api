@@ -1,9 +1,13 @@
 import { PingResolver } from './ping'
 import { SongResolver } from './SongResolver'
+import { buildSchema } from 'type-graphql'
 
-const Resolvers = [
-  PingResolver,
-  SongResolver
-] as const
+export async function buildResolversSchema() {
+  return await buildSchema({
+    resolvers: [
+      PingResolver,
+      SongResolver
+    ]
+  })
+}
 
-export default Resolvers
