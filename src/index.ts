@@ -9,8 +9,9 @@ if(process.env.NODE_ENV === 'development') {
 async function main() {
   await connect()
   const app = await initServer()
-  app.listen(process.env.SERVER_PORT)
-  console.log('Server on port ', process.env.SERVER_PORT)
+  app.listen(process.env.PORT || 3000, () => {
+    console.log('Server on port', process.env.PORT)
+  })
 }
 
 main().then(() => {})
