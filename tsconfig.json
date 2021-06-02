@@ -3,6 +3,7 @@
     "target": "esnext",
     "module": "commonjs",
     "strict": true,
+    "noEmit": true,
     "jsx": "preserve",
     "importHelpers": true,
     "moduleResolution": "node",
@@ -15,9 +16,7 @@
     "rootDir": "./src",
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true,
-    "types": [
-      "webpack-env"
-    ],
+    "types": [],
     "lib": [
       "esnext",
       "dom",
