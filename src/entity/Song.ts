@@ -1,10 +1,11 @@
 import "reflect-metadata";
 import {Field, ID, ObjectType } from 'type-graphql'
-import { ObjectId } from 'mongodb'
-import { getModelForClass, prop } from '@typegoose/typegoose'
+import {getModelForClass, ModelOptions, prop} from '@typegoose/typegoose'
 import { Verse } from './Verse'
 import { Ref } from '../types'
+import mongoose from 'mongoose'
 
+@ModelOptions({schemaOptions: { timestamps: true }})
 @ObjectType()
 export class Song {
   @Field(type => ID)
@@ -18,16 +19,17 @@ export class Song {
   @Field()
   author!: string
 
-  @Field(type => [Verse], {nullable: 'itemsAndList'})
   @prop({required: true})
+  @Field(type => [Verse], {nullable: 'itemsAndList'})
   verse!: Ref<Verse>[]
 
-  @prop()
+  @prop({required: false})
   @Field()
   cover?: string
 
+  @prop({default: () => new Date()})
   @Field(() => String)
-  createAt!: string
+  createdAt!: Date
 }
 
 export const SongModel = getModelForClass(Song)

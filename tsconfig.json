@@ -15,9 +15,7 @@
     "rootDir": "./src",
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true,
-    "types": [
-      "webpack-env"
-    ],
+    "types": [],
     "lib": [
       "esnext",
       "dom",
