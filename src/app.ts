@@ -8,7 +8,9 @@ export async function initServer() {
     schema: await buildResolversSchema(),
     context: (
       {req, res}
-    ) => ({req, res})
+    ) => ({req, res}),
+    playground: true,
+    introspection: true
   })
   server.applyMiddleware({app, path: '/api'})
   return app
