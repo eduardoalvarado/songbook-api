@@ -10,6 +10,13 @@ export class SongResolver {
     return SongModel.find();
   }
 
+  @Query(() => Song)
+  async getSongById(
+    @Arg('id', () => String) id: string
+  ) {
+    return SongModel.findById(id)
+  }
+
   @Mutation(returns => Song)
   async createSong(
     @Arg('inputSong') inputSong: InputSong
