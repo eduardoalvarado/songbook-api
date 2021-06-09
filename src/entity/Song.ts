@@ -19,8 +19,8 @@ export class Song {
   @Field()
   author!: string
 
-  @prop({required: true})
-  @Field()
+  @prop({required: false})
+  @Field({nullable: true})
   gender!: string
 
   @prop({required: true})
