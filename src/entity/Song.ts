@@ -20,6 +20,10 @@ export class Song {
   author!: string
 
   @prop({required: true})
+  @Field()
+  gender!: string
+
+  @prop({required: true})
   @Field(type => [Verse], {nullable: 'itemsAndList'})
   verse!: Ref<Verse>[]
 
