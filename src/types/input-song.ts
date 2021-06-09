@@ -12,8 +12,8 @@ export class InputSong implements Partial<Song> {
   @Field()
   author!: string
 
-  @Field()
-  gender!: string
+  @Field({nullable: true})
+  gender?: string
 
   @Field(type => [InputVerse] )
   verse!: Ref<InputVerse>[]
