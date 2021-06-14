@@ -17,6 +17,20 @@ export class SongResolver {
     return SongModel.findById(id)
   }
 
+  @Query(() =>[Song])
+  async getSongByAttr(
+    @Arg('attr', () => String) attr: string
+  ) {
+    const searchQuery = {
+      $or: [
+        {title: { $regex: attr, $options: 'i' }},
+        {author: { $regex: attr, $options: 'i' }},
+        {gender: { $regex: attr, $options: 'i' }}
+      ]
+    }
+    return SongModel.find(searchQuery).lean()
+  }
+
   @Mutation(returns => Song)
   async createSong(
     @Arg('inputSong') inputSong: InputSong
